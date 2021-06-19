@@ -3,6 +3,14 @@
 1.  Classification of time sinals with STFT (Short Time Fourier Transform)
 2.  Apply CNN (Convolutional Neural Network) to 1. 
 
+
+# Transform Signals from 1D into 2D
+
+Normally Audio data is 1-D
+
+Keypoint : If we can transform 1-D Audio into 2-D, then we can feed them as images to CNN(2-D).The most popular method to do this, is to turn Audio signal into Spectogram. STFT is one of the method to do that.
+
+
 # Short Time Fourier Transform (STFT)
 Why uses STFT?
 <br>Why not Fast Fourier Transform (FFT)?
@@ -63,10 +71,32 @@ References: https://learn.flucoma.org/algorithms/stft/
 <br>Reference3: https://cnx.org/contents/0sbTkzWQ@2.2:PmFjFoIu@5/Short-Time-Fourier-Transform
 
 
+## Recap on STFT
+
+Spectogram shows spectrum of signal as log of the power spectrum.
+
+`spectrum=STFT(x)`
+
+`spectrogram=log(∣STFT(x)∣^2)`
+
+Since the range of log function is from -∞ to +∞, which is very different from image value (0 to 255). Therefore we should normalize the spectogram, so that the range can be the same.
 
 
+## Normalization
 
+Spectogram is not the same as natural images. We have to normalize them before feeding to CNN.
 
+Images are stored as integers from 0 to 255. If we normalized them, they will be stored from 0 to 1 ( 0/255 to 255/255). 
+
+# CNN
+
+## Question 
+
+1.  How do we begin? Starting from scratch or improve from others ?
+2.  What are required parameters?
+3.  
+
+## CNN (TODO)
 
 
 
