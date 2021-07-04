@@ -1,0 +1,8 @@
+{
+"dataPath":"C:/workspace/FRA-UAS/semester2/CompInt/Code/CompInt-Project-T3/Data/",
+"outputDirPredix":"Object_spectrogram_",
+"fileType":"*.csv",
+"beginObjectNumber":3,
+"untilObjectNumber":3,
+"outputFiletype":".jpg"
+}
