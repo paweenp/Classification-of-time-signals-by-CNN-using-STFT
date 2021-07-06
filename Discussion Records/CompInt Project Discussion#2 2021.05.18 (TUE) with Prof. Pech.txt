@@ -1,0 +1,64 @@
+Dear all,
+
+Below you will find the summarization of our session today with Prof. Pech
+
+From me
+
+Questions to ask Professor.Pech on 18 May (TUE)
+-------------------------------------------------------------------------
+Project detail on T3 : Classification of time signals by CNN using STFT
+1. ) Expected Outcome
+2. ) Dataset
+3. ) Details on the project
+4. ) Feedback during the project
+5. ) Resource on project
+6. ) Criteria for marks
+
+
+Answer from Prof. Pech
+-------------------------------------------------------------------------
+1. ) Data Set from professor 1-D audio signals
+2. ) Identify the Sound Source  (Classification of sound source)
+3. ) The goal of the project : classify the source of the signal.
+4. ) High marks comes from structure of the project. We should be able to solve the problem
+
+Direction of the project
+We should use the STFT with the following criteria to find the best window lengths and best overlapped
+
+1.) Various Overlapped Windows
+2.) Various Window Types ex : Hamming
+3.) Various Window Lengths : begin with the small lengths would be good.
+
+The Final outcome of the project would be
+1.) Be able to classify Source of signal (which is still under research what is it?)
+2.) CNN Structure and best window lengths and overlapped.
+
+------------------------------------------------------------------------------------------------------------------------
+
+From Mahdieh
+
+From 22 of June the normal classes will start.
+Professor will provide us the dataset for the classification
+Data is 1 dimensional time signal and the task is to identify the sound source.
+The goal of this project is to identify the class.
+For High score clearly structure the project. And work on all the topics which are in here.
+Short time Fourier transform on the data then on the sliding Window. So first we get the time signal.
+And use CNN to classify the data. That can be the short window.
+We get the Fourier transform send it to our trained CNN and we get the result which is nothing or there is a sound source and when there is a sound source which sound source from which signal has been send.
+Check what is the best window length. We have to overlap the windows and find out what is the best overlapped windows.
+Because when we do it step by step maybe we skip the important part of the signal.
+We should try various windows sizes, overlaps and types of windows.
+Like a rectangle window but it has some problems in the frequency domain.
+We can use either hamming window or a gaussian window.
+Check which is the best window length. And which is the best overlap then we have to train the CNN and we have to do research on the best CNN structure to solve the problem.
+So we can not find the best window length and the best overlap without training the CNN.
+So I can not find the best window then best overlap and .. we can start with one architecture of the CNN and with this architecture we can look for the best window length and overlap then we can very the CNN architecture.
+In Matlab we first choose the hamming window then give the length.
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+If you have more to add, please feel free to do so and forward it to all of us.
+
+Best regards,
+Paween Pongsomb

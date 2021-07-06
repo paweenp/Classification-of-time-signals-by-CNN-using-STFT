@@ -1,0 +1,16 @@
+Dear all, This is a summary from what we discussed.
+
+Discussion #7 2021.06.19 (SAT)
+
+1.  Project structure
+
+    1-D Audio -> STFT -> Spectogram (2-D) --> CNN --> Classify
+
+2.  on 26 June. 4:30 PM (SAT) next meeting
+
+3.  We will sit with prof.  on 29 June. (TUE)
+
+4.  Goal until next meeting : research on CNN ( Best if we could come up with Demo )
+
+Best regards
+Paween Pongsomboon

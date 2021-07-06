@@ -1,0 +1,42 @@
+Dear all,
+
+This is what we discussed with prof. and within our own session on 15.06.2021 (TUE)
+
+Discussions#6
+
+Questions
+1.  What properties do we look for in the object?
+
+2.  How do we find the pattern from signals ?
+
+Answers
+
+1.  Identify the object, identify the spectogram.
+
+2.  Different spectogram can identify the object
+
+3.  Finding a pattern with CNN ( we cannot inspect visually)
+
+4.  Inspect the neurons in CNN, but it will not tell explicitly the features.
+    We have to feed
+
+First Task : Raw Data --> STFT --> Normalized --> CNN --> Result
+
+Belows are from our own discussion
+
+why Normalized?
+
+How the energy get lost when performing windowing?
+
+PS. To all member, please have a look in the link below to get the idea of many things we are doing. (Especially STFT and Spectogram and what does it represent)
+
+https://docs.google.com/document/d/1iWQDj1eD-0t6DtK_n8BdqArzfKPxb31Goric0PBaZX0/edit
+
+Also my own research on our working branch: https://github.com/paweenp/CompInt-Project-T3/blob/master/Researches/Research_Paween.md (you can also push your research there)
+
+PS2. Today, we will not meet with professor again. Since we already got the answer and we need to feed data into CNN to see the result first. Then we will discuss with Professor next week.
+
+Thank you for your attention.
+
+Best regards
+Paween Pongsomboon

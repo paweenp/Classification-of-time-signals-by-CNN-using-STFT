@@ -1,0 +1,20 @@
+Dear all,
+
+Project group T3: Classification of time signals by CNN using STFT
+
+Today I had a short meeting with Prof.Pech and asked some questions to clarify our doubts.
+
+I asked him to clarify the signal source.
+
+Prof. explained the signal source as the source of audio signal or the secondary source which is the surface reflects the signal.
+
+By using the classification, we should be able to see whether each frequency indicates the source as the original one or the reflected one.
+
+Also, if there is any existed model, we can improve it as well.
+
+In the mean time, prof. will send us the 1-D dataset we will use for the project.
+
+PS. Prof. Pech has not uploaded the lecture slides yet.
+
+Best regards
+Paween Pongsomboon

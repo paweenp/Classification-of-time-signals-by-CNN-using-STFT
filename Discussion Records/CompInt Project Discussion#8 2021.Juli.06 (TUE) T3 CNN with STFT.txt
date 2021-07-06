@@ -1,0 +1,29 @@
+Dear all,
+
+you will find the contents of today's discussion below.  2021.Juli.06 (TUE)
+
+Questions
+
+1.  biased Dataset?
+
+Answers
+
+1.  Tasks --> we can choose between 1. Distinguish Object1 from others or 2. Distinguish each Object (1 - 3)
+
+2.  There is a method to balance dataset but in this dataset there is no difference.
+
+3.  Training Data should be selected Randomly (Different each time)
+
+
+Today we have verified our experiment design with Professor and it seems correct.
+
+The Size of spectrogram images were downsampled to 1/10 of their original size.
+
+Since the ConvNets we used is the one from MATLAB, we have to research more on its Layer and Configurations (Variables)
+
+We will try to migrate into Python from MATLAB from now on.
+
+Ps. In this E-Mail, you will also find Experiment Design excel file as attached file.
+
+Best regards
+Paween Pongsomboon

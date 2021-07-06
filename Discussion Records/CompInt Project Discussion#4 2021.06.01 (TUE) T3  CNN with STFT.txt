@@ -1,0 +1,35 @@
+Dear all,
+
+This is what I got from our discussion with professor.
+
+(MON)
+
+QUESTIONS
+1.  Explain Input Signal
+2.  Clarify our goals of project
+
+ANSWERS
+1. Can Skip row in data up to F
+1. Y-Axis is the amplitude
+2. X-Axis is the time
+3. The goal of the project : identify the secondary source ( from object)
+from thew freqeucny signal.
+4. Data in each spreadsheet is for each object and is for the secondary source ( from object)
+5. Frequency Domain, Normalized the frequency before input to the CNN
+6. STFT --> Normalized --> CNN
+7. Total energy should be one or something ( we have to identify it )
+8. We can start with total energy = 1 (preferrable)
+9. After normalized data --> feed the data to the CNN
+10. STFT --> Spectogram --> write into a picture and feed to CNN
+11. Find out the length of STFT window 128 or 256 or else?
+12. Base on CNN, we have to test with 1-D or 2-D (Preprocessing)
+13.
+
+FOCUS
+Initially Focusing on : Spectogram
+
+
+Prof. will keep feeding the data from other objects to us.
+
+Best regards
+Paween Pongsomboon
