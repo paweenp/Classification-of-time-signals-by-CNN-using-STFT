@@ -5,7 +5,7 @@
 %   1.Read Images to Program
 %   2.Label Images
 
-image_path = "C:\workspace\FRA-UAS\semester2\CompInt\Code\MATLAB\Objects";
+image_path = "C:\workspace\FRA-UAS\semester2\CompInt\Code\CompInt-Project-T3\MATLAB\DownsampledObjects";
 
 % Create Image Data Store
 imds = imageDatastore(image_path, ...
@@ -23,9 +23,12 @@ numTrainFiles = ceil(0.66 * numFilesForEachObject); % train 66 % and test 33 %
 
 [imdsTrain,imdsValidation] = splitEachLabel(imds,numTrainFiles,'randomize');
 
+inputImg = imread(imds.Files{1});
+ImgSize  = size(inputImg);
+
 % Create CNN layers
-layers = [
-    imageInputLayer([656 875 3])
+ConvNetlayers = [
+    imageInputLayer(ImgSize)
     
     convolution2dLayer(3,8,'Padding','same')
     batchNormalizationLayer
@@ -58,7 +61,7 @@ options = trainingOptions('sgdm', ...
     'Plots','training-progress');
 
 % Train Network
-net = trainNetwork(imdsTrain,layers,options);
+net = trainNetwork(imdsTrain,ConvNetlayers,options);
 
 %% Classify using Trained Network
 [label,score] = classify(net,img);
