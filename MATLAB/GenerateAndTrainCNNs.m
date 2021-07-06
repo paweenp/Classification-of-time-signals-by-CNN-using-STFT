@@ -15,11 +15,11 @@ imds = imageDatastore(image_path, ...
 
 labelCount = countEachLabel(imds);
 
-img = readimage(imds,1);
+img = readimage(imds,10);
 
-numFilesForEachObject = labelCount.Count(1);
+numFilesForEachObject = min(labelCount.Count);
 
-numTrainFiles = ceil(0.66 * numFilesForEachObject); % train 66 % and test 33 %
+numTrainFiles = ceil(0.80 * numFilesForEachObject); % train 66 % and test 33 %
 
 [imdsTrain,imdsValidation] = splitEachLabel(imds,numTrainFiles,'randomize');
 

@@ -14,7 +14,7 @@ userSettings = jsondecode(str); % Using the jsondecode function to parse JSON fr
 object_list = dir(convertCharsToStrings(userSettings.dataPath) + convertCharsToStrings(userSettings.fileType));
 
 % Configuration for STFT Window
-win = hamming(128);
+win = hamming(userSettings.hammingWindow);
 d = seconds(1e-3);
 
 dir_prefix = convertCharsToStrings(userSettings.outputDirPredix);
@@ -27,7 +27,7 @@ for index = userSettings.beginObjectNumber:userSettings.untilObjectNumber
     
     
     for jindex = 1:size(data,1)
-        stft(data(jindex,:), d, 'Window', win, 'OverlapLength', 50);
+        stft(data(jindex,:), d, 'Window', win, 'OverlapLength', userSettings.windowOverlap);
         set(gca, 'Visible', 'off'); % Clear Text from graph
         colorbar('off'); % Disable colorbar
         

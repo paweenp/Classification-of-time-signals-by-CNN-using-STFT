@@ -1,8 +1,10 @@
 {
 "dataPath":"C:/workspace/FRA-UAS/semester2/CompInt/Code/CompInt-Project-T3/Data/",
-"outputDirPredix":"Object_spectrogram_",
+"outputDirPredix":"Object_spectrogram_256_",
 "fileType":"*.csv",
-"beginObjectNumber":3,
+"beginObjectNumber":1,
 "untilObjectNumber":3,
-"outputFiletype":".jpg"
+"outputFiletype":".jpg",
+"hammingWindow":256,
+"windowOverlap":50
 }
