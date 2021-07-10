@@ -5,7 +5,7 @@
 %   1.Read Images to Program
 %   2.Label Images
 
-image_path = "C:\workspace\FRA-UAS\semester2\CompInt\Code\CompInt-Project-T3\MATLAB\DownsampledObjects";
+image_path = "C:\workspace\FRA-UAS\semester2\CompInt\CompInt-Project-T3\MATLAB\DownsampledObjects";
 
 % Create Image Data Store
 imds = imageDatastore(image_path, ...
@@ -19,7 +19,7 @@ img = readimage(imds,10);
 
 numFilesForEachObject = min(labelCount.Count);
 
-numTrainFiles = ceil(0.80 * numFilesForEachObject); % train 66 % and test 33 %
+numTrainFiles = ceil(0.66 * numFilesForEachObject); % train 80 % and test 20 %
 
 [imdsTrain,imdsValidation] = splitEachLabel(imds,numTrainFiles,'randomize');
 
