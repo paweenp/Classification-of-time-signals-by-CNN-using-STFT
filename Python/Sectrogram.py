@@ -9,6 +9,7 @@ df = openpyxl.load_workbook("Data Object 2.xlsx")
 
 sheet= df.active
 rows = sheet.max_row
+row = rows + 1
 columns = sheet.max_column
 col = columns+1
 print(rows, columns)
@@ -18,14 +19,14 @@ print(rows, columns)
 
 print(df)
 lista = []
-for j in range(1,3):
+for j in range(1,row):
     for i in range(1,col):
         e = sheet.cell(row=j, column=i)
         lista.append(e.value)
     plt.plot(lista)
     plt.show()
     lista = []
-    print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+    
 
 
 
