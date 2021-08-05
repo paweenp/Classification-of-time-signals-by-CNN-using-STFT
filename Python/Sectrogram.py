@@ -17,13 +17,14 @@ print(rows, columns)
 #df = pd.read_excel('Data Object 2.xlsx')
 
 print(df)
-lista=[]
+lista = []
 for j in range(1,3):
     for i in range(1,col):
-        e=sheet.cell(row=j, column=i)
+        e = sheet.cell(row=j, column=i)
         lista.append(e.value)
     plt.plot(lista)
     plt.show()
+    lista = []
     print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
 
 
