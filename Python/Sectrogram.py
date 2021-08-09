@@ -14,7 +14,7 @@ import os
 
 for k in range(1,4):
     df = openpyxl.load_workbook("Data Object " + str(k)+".xlsx")
-    #df = openpyxl.load_workbook("Data Object 1.xlsx")
+
     sheet = df.active
     rows = sheet.max_row
     row = rows + 1
@@ -23,6 +23,10 @@ for k in range(1,4):
     print(rows, columns)
     lista = []
     listb = []
+    directory = "object" + str(k)
+    parent_dir = "D:\FRA-UAS\Sem2\CompInt-Project-T3\Python"
+    path = os.path.join(parent_dir, directory)
+    os.mkdir(path)
     for j in range(1, row):
         for i in range(1, col):
             e = sheet.cell(row=j, column=i)
@@ -41,10 +45,8 @@ for k in range(1,4):
         #plt_spec.show()
 
 
-    directory = "object" + str(k)
-    parent_dir = "D:\FRA-UAS\Sem2\CompInt-Project-T3\Python"
-    path = os.path.join(parent_dir, directory)
-    os.mkdir(path)
+
+
 
 
 
