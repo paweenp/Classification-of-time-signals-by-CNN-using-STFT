@@ -37,7 +37,7 @@ The Final outcome of the project would be
 
 From Mahdieh
 
-From 22 of June the normal classes will start.
+
 Professor will provide us the dataset for the classification
 Data is 1 dimensional time signal and the task is to identify the sound source.
 The goal of this project is to identify the class.
