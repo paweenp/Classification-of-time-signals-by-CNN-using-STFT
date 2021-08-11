@@ -1,0 +1,16 @@
+Dear all,
+
+This is what we discussed on 2021.08.10 (TUE)
+
+1. Mahdieh and Rabiul created a program (see Mahdieh branch on github)
+2. I asked everyone to look into the ExperimentDesign (Link: https://github.com/paweenp/CompInt-Project-T3/tree/master/ExperimentDesign) on Flowchart Diagram.
+We plan to do each of our task as a module or function that can be called upon.
+3. I worked on CNN layers and currently facing a problem of CNN layers size incompatible.
+4. We will keep contact Prof. every week and ask for timeslot
+5. Next meeting will be on SAT 14.08.2021 at 9:00 PM, since everyone will be available.
+
+PS. To Mukit, I recommend you to see the Experiment design that I up[date
+PS2. To Mukit and Rabiul please push your works to branch to share with us. (From Paween)
+
+Best regards,
+Paween Pongsomboon
