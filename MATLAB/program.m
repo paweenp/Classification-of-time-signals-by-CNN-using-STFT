@@ -104,7 +104,7 @@ model = trainNetwork(imdsTrain,CNNlayers,options);
 %% 5.
 disp("Classify network with Test Data ...");
 
-[YPred, score] = performClassification(model, imdsValidation);
+[YPred, score] = classify(model, imdsValidation);
 
 YTest = imdsValidation.Labels;
 
