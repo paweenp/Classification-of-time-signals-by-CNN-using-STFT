@@ -1,0 +1,21 @@
+Q&A
+
+Questions
+1. MATLAB code is valid ?
+2. More data ?
+3. Project submission ? via Email ? 
+4. Presentation ? Live or videos ?  
+5. 
+6.
+
+Answers
+1. We should focus on CNN architecture more
+2. Recall, Precision, should be observed 
+3. Observe more on Confusion Matrix TP TN FP FN 
+4. More Data will be provided within this week
+5. Upload Project on Moodle ( not yet ) includes 1. Source codes,  2. Report, 3. Powerpnt file
+6. Submission Date is not the presentation date. It will happen in October
+7.  
+8.
+9. 
+
