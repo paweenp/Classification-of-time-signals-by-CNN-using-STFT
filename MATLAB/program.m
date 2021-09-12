@@ -88,7 +88,7 @@ disp("Select " + numTrainFiles + " images for Training Data  ...");
 % Set trainig options
 options = trainingOptions('sgdm', ...
     'InitialLearnRate',0.01, ...
-    'MaxEpochs',4, ...
+    'MaxEpochs',10, ...
     'MiniBatchSize',16, ...
     'Shuffle','every-epoch', ...
     'ValidationData',imdsValidation, ...
@@ -103,23 +103,24 @@ model = trainNetwork(imdsTrain,CNNlayers,options);
 
 %% 5.
 disp("Classify network with Test Data ...");
-
 [YPred, score] = classify(model, imdsValidation);
-
 YTest = imdsValidation.Labels;
 
+% Accuracy
 accuracy = sum(YPred == YTest)/numel(YTest);
-
 disp("accuracy : " + accuracy);
 
+% Confusion Matrix
+C_Matrix = confusionmat(YPred, YTest);
+
+% Plot confusion matrix
+plotconfusion(YTest,YPred)
+cm = confusionmat(YTest,YPred);
+cm = cm';
+
+% Computing precision and recall and F1-Score
+precision = diag(cm)./sum(cm, 2);
+overall_precision = mean(precision);
+recall= diag(cm)./sum(cm, 1)';
+
 disp("End of Program");
-
-
-
-
-
-
-    
- 
-
-
