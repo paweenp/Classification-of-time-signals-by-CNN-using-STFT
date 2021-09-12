@@ -133,6 +133,8 @@ F_score=2*overall_recall*overall_precision/(overall_precision+overall_recall);
 overall_F_score = mean(F_score)
 
 disp("accuracy : " + accuracy);
+disp("overall_precision : " + overall_precision);
+disp("overall_recall : " + overall_recall);
 disp("F_score : " + overall_F_score);
 
 disp("End of Program");
