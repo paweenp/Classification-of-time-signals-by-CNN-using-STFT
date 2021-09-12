@@ -1,0 +1,28 @@
+Dear all,
+
+Sorry for the delay. I forgot to write the record of our discussion on yesterday.
+
+Questions.
+
+1.How did the learning process work? --> Feed Object 1 all images then Object 2 all images and so on.
+
+2.Can we use MATLAB for our Project, If so it could help simplify our CNN methods? --> We will discuss with Professor.
+
+Notes
+
+1.Everyone can start push everything they found to own branch
+
+2.Migrating project to Python
+   For Mahdieh and Rabiul --> Responsible from reading the input from Professor to Spectrogram images.
+    Expected Input: Xlsx or CSV files
+    Expected Output: Bunch of Spectrogram Images
+   For Paween and Mukit --> Responsible from Feeding Spectrograms to Object Classification.
+    Expected Input: Spectrogram Images from each Objects.
+    Expected Output: CNN, Classification Result, Accuracy, SNR, Confusion matrix and so on.
+
+3. Next meeting will be on 9th Aug Monday at 4 PM. ( can change the time, since this is not normal meeting from every week)
+
+P.S. If anything is missing feel free to tell me.
+
+Best regards,
+Paween Pongsomboon
