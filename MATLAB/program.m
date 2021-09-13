@@ -8,9 +8,11 @@
 % 5. Plot the Graph showing the training and validation
 
 %% 1. - 2.
-data_path = "C:\workspace\FRA-UAS\semester2\CompInt\CompInt-Project-T3\Data";
+%Giving path of dataset folder
+data_path = "D:\FRA-UAS\Sem2\CompInt-Project-T3-master\Data";
 list_obj = dir(data_path + '\*.xlsx');
 total_obj = size(list_obj, 1);
+
 
 window = hamming(256); % window_size = 64, 128, 256
 overlap = 50; % 50 percent overlap between windows
@@ -45,7 +47,8 @@ for idx = 1:total_obj
                         overlap); 
 
     disp("Generating Spectrogram Images of object " + idx + " is done.");
-                    
+    
+    
     % Resize images's dimension if required
     if resize_factor ~= 1
         
@@ -74,7 +77,7 @@ CNNlayers = createCNNlayers(size(input));
 
 %% 4.
 % data selection option
-train_test_ratio = 0.8;
+train_test_ratio = 0.9;
 
 % Create labels
 labelCount = countEachLabel(imds);
@@ -88,7 +91,7 @@ disp("Select " + numTrainFiles + " images for Training Data  ...");
 % Set trainig options
 options = trainingOptions('sgdm', ...
     'InitialLearnRate',0.01, ...
-    'MaxEpochs',10, ...
+    'MaxEpochs',6, ...
     'MiniBatchSize',16, ...
     'Shuffle','every-epoch', ...
     'ValidationData',imdsValidation, ...
@@ -103,24 +106,45 @@ model = trainNetwork(imdsTrain,CNNlayers,options);
 
 %% 5.
 disp("Classify network with Test Data ...");
+
 [YPred, score] = classify(model, imdsValidation);
+
 YTest = imdsValidation.Labels;
 
-% Accuracy
+%finding accuracy 
 accuracy = sum(YPred == YTest)/numel(YTest);
-disp("accuracy : " + accuracy);
 
-% Confusion Matrix
-C_Matrix = confusionmat(YPred, YTest);
 
-% Plot confusion matrix
+
+
+
+%Plot confusion matrix
 plotconfusion(YTest,YPred)
 cm = confusionmat(YTest,YPred);
 cm = cm';
 
-% Computing precision and recall and F1-Score
-precision = diag(cm)./sum(cm, 2);
-overall_precision = mean(precision);
-recall= diag(cm)./sum(cm, 1)';
+% computing percision and recall and F1Score
+precision = diag(cm)./sum(cm,2);
+overall_precision = mean(precision)
+recall= diag(cm)./sum(cm,1)';
+overall_recall = mean(recall);
+
+F_score=2*overall_recall*overall_precision/(overall_precision+overall_recall);
+overall_F_score = mean(F_score)
+
+disp("accuracy : " + accuracy);
+disp("overall_precision : " + overall_precision);
+disp("overall_recall : " + overall_recall);
+disp("F_score : " + overall_F_score);
 
 disp("End of Program");
+
+
+
+
+
+
+    
+ 
+
+
