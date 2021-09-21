@@ -1,5 +1,7 @@
 # To-Do-List
 
+This is just my ideas, you an debate and negotiate.
+
 Delegates works.
 
 ## Work assigned to Mahdieh, Rabiul ----------------------------------------------------------
