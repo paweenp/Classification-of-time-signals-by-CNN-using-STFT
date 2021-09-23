@@ -78,20 +78,24 @@ train_test_ratio = 0.8;
 
 % Create labels
 labelCount = countEachLabel(imds);
-numFilesForEachObject = min(labelCount.Count);
-numTrainFiles = ceil(train_test_ratio * numFilesForEachObject);
 
-disp("Select " + numTrainFiles + " images for Training Data  ...");
+% Select 80 % For train and 20 % for test in each Object
+[imdsTrain, imdsTest] = splitEachLabel(imds, train_test_ratio, 'randomize');
+numTrain = size(imdsTrain.Files, 1);
+numTest = size(imdsTest.Files, 1);
 
-[imdsTrain, imdsValidation] = splitEachLabel(imds,numTrainFiles, 'randomize');
+%% Temp Section !TODO Delete this line
+
+disp("Select " + numTrain + " images for Training ...");
+disp("Select " + numTest + " images for Testing ...");
 
 % Set trainig options
 options = trainingOptions('sgdm', ...
     'InitialLearnRate',0.01, ...
-    'MaxEpochs',10, ...
+    'MaxEpochs',30, ...
     'MiniBatchSize',16, ...
     'Shuffle','every-epoch', ...
-    'ValidationData',imdsValidation, ...
+    'ValidationData',imdsTest, ...
     'ValidationFrequency',30, ...
     'Verbose',false, ...
     'Plots','training-progress');
@@ -103,8 +107,8 @@ model = trainNetwork(imdsTrain,CNNlayers,options);
 
 %% 5.
 disp("Classify network with Test Data ...");
-[YPred, score] = classify(model, imdsValidation);
-YTest = imdsValidation.Labels;
+[YPred, score] = classify(model, imdsTest);
+YTest = imdsTest.Labels;
 
 % Accuracy
 accuracy = sum(YPred == YTest)/numel(YTest);
