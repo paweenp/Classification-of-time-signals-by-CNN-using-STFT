@@ -1,0 +1,142 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Classification of time signals by CNN using STFT\\
+% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+% should not be used}
+\thanks{Identify applicable funding agency here. If none, delete this.}
+}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Paween Pongsomboon}
+\IEEEauthorblockA{\textit{Computational Intelligence } \\
+\textit{Matriculation 1346048}\\
+% City, Country \\
+paween.pongsomboon@stud.fra-uas.de}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Mahdieh Pirmoradian}
+\IEEEauthorblockA{\textit{Computational Intelligence} \\
+\textit{Matriculation 1323281}\\
+%City, Country \\
+mahdieh.pirmoradian@stud.fra-uas.de}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} TestName }
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Md Rabiul Islam}
+\IEEEauthorblockA{\textit{Computational Intelligence } \\
+\textit{Matriculation 1345492}\\
+% City, Country \\
+md.islam3@stud.fra-uas.de}
+}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\begin{IEEEkeywords}
+Convolutional Neural Network, Short Time Fourier Transform, Spectrogram
+\end{IEEEkeywords}
+
+\section{INTRODUCTION}
+A great deal of information about our everyday surroundings and the physical actions that happens there can be transmitted by sound. Therefore, classifying this sounds can be helpful in many ways like surveillance systems or awareness and understanding of other species behaviours. But on one side, humans hearing frequency range is limited between 20 to 20,000. On the other side, handling large volumes of data is impossible or time consuming. That is when, machine learning techniques can be used. With recent great advancements in the application of automatic systems numerous researches have been done in automatic sound classification as well. For example, EnvNet \cite{b1} and home automation \cite{b2}. in this research a strong deep learning machine learning approach that differs from other types of neural networks for instance having a specialty in being able to recognize patterns as well as find meaning of them names as a Convolutional Neural Network (CNN), get attentions. It behaves similarly to how our visual cortex recognizes images by Feature learning and classification. First by giving a big amount of labeled data to CNNs for training it can recognize the features which are similar in each category then at the time of testing by receiving a new data it can recognize to which category it belongs to. CNNs are consisted of some layers. It receives the input in the form of an image then in each layer there is a filter to recognize features then the output of each layer is the input to the next layer. In CNNs the first few layers are for feature extraction and the last layers for classification. 
+When we try to train our CNN straight from row audio, we get certain issues. Firstly, long-range dependencies are difficult to record. Furthermore, in most devices like cellphones they use image classification functionality also. Therefore to reduce the cost of development it is better to use the same technology for both image and sound classification. That is the main reason that, using a Spectrogram, which is a far more compact representation of the sound and computationally simpler than raw audio is helpful. We utilize a spectrogram to visualize signals into images, which divides your signal into tiny windows and displays a spectrum of colors indicating the strength of each frequency. In reality, it employs the Short Time Fourier Transform (STFT). The fundamental aim of this paper is to show how we can use CNNs to categorize a long-sampled time domain signal. Then we reviewed what adjustments needed to be made to our Conv Net's design in order to achieve a better result in the accuracy of model classifying, as well as what aspects we should consider while testing our program. Furthermore, in the process of creating spectrograms, selecting the window type, size, and speed of movement was critical for obtaining an accurate picture of the sound.
+
+
+\section{METHODOLOGY}
+
+The experiment of classification of time signals by CNN using STFT has been conducted following the flowchart diagram in ``Fig.~\ref{fig_flowchart}''.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale = 0.28]{flowchart1.png}}
+\caption{Flowchart diagram of the experiment}
+\label{fig_flowchart}
+\end{figure}
+
+The experiment is composed of three parts.
+
+\subsection{Preprocessing}
+Preprocessing is a method to preprocess on data by converting one dimensional data (1D data) into two dimensional data (2D data). Preprocessing performs STFT on time signal data using (\ref{eqn_stft}), which is from Jont B. Allen\cite{b3}, and generates spectrogram as a result as shown in ``Fig.~\ref{fig_preprocessing}'', where the input is time signal data and the output is spectrogram. Spectrogram is a signal's visual representation. It plots the amplitude of the signal's frequency components over time. 
+
+\begin{equation}
+X(f,t) = \int_{-\infty}^{\infty} w(t-\tau)x(\tau)e^{j2\pi f\tau} \,d\tau \label{eqn_stft}
+\end{equation}
+
+where \(X(f, t) \) is the spectrogram, t is the time variable, \(w(t - \tau)\) is the shifted hamming window with the size of \(256\) sampling point, \(x(\tau)\) is the input
+signal, and \(exp (j2\pi f\tau)\) is the complex exponential.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale = 0.35]{Preprocessing.png}}
+\caption{Performing STFT to convert 1D data into 2D data}
+\label{fig_preprocessing}
+\end{figure}
+
+
+\subsection{Training}
+
+We construct CNN layers as ``Fig.~\ref{fig_CNN}'', while each color represent different layer type. According to 
+
+
+\begin{tabular}{||c c c c||} 
+
+\end{tabular}
+
+TODO - add some text here to explain steps
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale = 0.45]{CNN_model_complete_compressed.png}}
+\caption{CNN Layer Diagram}
+\label{fig_CNN}
+\end{figure}
+
+\subsection{Validation}
+
+TODO - add some text here to explain steps
+
+TODO - add photos of validation
+
+
+\section{EXPERIMENT RESULT}
+
+
+TODO 
+
+Experiment with 100 times
+
+Show confusion matrix 
+
+Write about Evaluation score (Accu, Precision, etc)
+
+Classification result
+
+
+\section{CONCLUSION}
+
+
+
+\begin{thebibliography}{00}
+\bibitem{b1} Y. Tokozume and T. Harada, “Learning environmental sounds with end-to-end convolutional neural network,” in 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2017, pp. 2721–2725 
+
+\bibitem{b2} J.-C. Wang, H.-P. Lee, J.-F. Wang, and C.-B. Lin, “Robust Environmental Sound Recognition for Home Automation,” IEEE Transactions on Automation Science and Engineering, vol. 5, no. 1, pp. 25–31, Jan. 2008.
+
+
+
+ \bibitem{b3} Jont B. Allen "Short Time Spectral Analysis, Synthesis, and Modification by Discrete Fourier Transform". IEEE Transactions on Acoustics, Speech, and Signal Processing. ASSP-25 (3): 235–238, June 1977.
+
+
+\end{thebibliography}
+\end{document}
