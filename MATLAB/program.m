@@ -95,7 +95,7 @@ disp("Select " + numTest + " images for Testing ...");
 
 
 % execute experiment multiple times
-experiment_loop = 2; % number of experiment times ( for ex, 1 means the experiment will run only 1 time )
+experiment_loop = 100; % number of experiment times ( for ex, 1 means the experiment will run only 1 time )
 plot_conf_mat = false; % set this param to true to see confusion matrix
 plot_train_graph = false; % if user wanna see the training graph, set this parameter to true, if not then false
 
@@ -143,9 +143,8 @@ for loop = 1:experiment_loop
     
     disp("Run experiment with loop number = " + loop);
     
-    
     % Set trainig options
-    if plot_train_graph == true
+    if plot_train_graph == true % Plot Train/Test graph
         options = trainingOptions('sgdm', ...
             'InitialLearnRate',0.01, ...
             'MaxEpochs',30, ...
@@ -155,7 +154,7 @@ for loop = 1:experiment_loop
             'ValidationFrequency',30, ...
             'Verbose',false, ...
             'Plots','training-progress');
-    else
+    else % Without Plotting Train/Test graph
         options = trainingOptions('sgdm', ...
             'InitialLearnRate',0.01, ...
             'MaxEpochs',30, ...
