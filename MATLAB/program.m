@@ -78,7 +78,7 @@ CNNlayers = createCNNlayers(size(input));
 
 %% 4.
 % data selection option
-train_test_ratio = 0.9;
+train_test_ratio = 0.8;
 
 % Create labels
 labelCount = countEachLabel(imds);
