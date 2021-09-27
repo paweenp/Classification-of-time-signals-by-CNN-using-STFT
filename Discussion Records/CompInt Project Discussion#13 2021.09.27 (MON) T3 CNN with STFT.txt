@@ -1,0 +1,73 @@
+TO DO LIST
+
+1. Experiments
+
+Now I will fix parameters
+
+Spectrogram Image to be 20% of the original size (line 24 set it to be 0.2 Resize_factor // normally on master it's set to 0.2);
+
+Mahdieh's work 
+
+Create Spectrogram of below data
+
+T1 File 
+ --- 1.png
+ --- 2.png
+ --- ...
+T2 File
+ --- 1.png
+ --- 2.png
+ --- ...
+
+...
+
+T12 File
+ --- 1.png
+ --- 2.png
+ --- ...
+
+
+ Paween's work
+
+ I will create 100 loops of experiment of 3 objects (Data Object 1 - 3)
+
+ and collect all the number and then create evaluation e.g. confusion matrix and F1score, precision, accu
+
+
+ Merge our works 
+
+ We are gonna test the model from Paween's work with Mahdieh's Spectrogram images and create classfication results
+
+
+Options for input
+---------------------------------------------------------------------------
+Object 1 , 2 , 3 : Training the model --> create Confusion Matrix
+---------------------------------------------------------------------------
+
+Classification
+---------------------------------------------------------------------------
+Object T1 - T12 : Classification Testing --> cannot create Confusion Matrix
+---------------------------------------------------------------------------
+
+
+2. Paper
+
+Introduction part is done.
+
+Methodology --> Paween will draw CNN diagram and also put some equations and write Methodology.
+
+Experiment Results --> We are gonna use
+ 1.) Training model from 3 objects --> Confusion matrix + accu + precision from 100 loops of experiment.
+ 2.) Classification results from T1 - T12 files --> Create Classification Table 
+
+Discussion and Conclusion 
+ Wait for Experiment results ( Paween has no idea yet ) --> Mahdieh? + Paween's help
+
+ Describe how our model was create with supervised learning ( because we used label for obj1-3) and then it can classify objects with unsupervised learning.   (known objects with labels  --> create model basing on that --> use it for classify unknown objects)
+
+References 
+    add link for references
+    normally the references will appear in intro, method and experiment result. (I expect it to be 5 - 8 refs)
+
+
+    
