@@ -5,7 +5,8 @@
 % 3. Create Convolution Neural Network (CNN) 
 % 4. Train Network with the Spectrogram Images (Randomly picked up train
 % and validation data )
-% 5. Plot the Graph showing the training and validation
+% 5. Plot the Graph showing the training and testing
+% 6. Show Confusion Matrix and Evaluation.
 
 %% 1. - 2.
 %Giving path of dataset folder
@@ -81,20 +82,22 @@ train_test_ratio = 0.9;
 
 % Create labels
 labelCount = countEachLabel(imds);
-numFilesForEachObject = min(labelCount.Count);
-numTrainFiles = ceil(train_test_ratio * numFilesForEachObject);
 
-disp("Select " + numTrainFiles + " images for Training Data  ...");
+% Select 80 % For train and 20 % for test in each Object
+[imdsTrain, imdsTest] = splitEachLabel(imds, train_test_ratio, 'randomize');
+numTrain = size(imdsTrain.Files, 1);
+numTest = size(imdsTest.Files, 1);
 
-[imdsTrain, imdsValidation] = splitEachLabel(imds,numTrainFiles, 'randomize');
+disp("Select " + numTrain + " images for Training ...");
+disp("Select " + numTest + " images for Testing ...");
 
 % Set trainig options
 options = trainingOptions('sgdm', ...
     'InitialLearnRate',0.01, ...
-    'MaxEpochs',6, ...
+    'MaxEpochs',30, ...
     'MiniBatchSize',16, ...
     'Shuffle','every-epoch', ...
-    'ValidationData',imdsValidation, ...
+    'ValidationData',imdsTest, ...
     'ValidationFrequency',30, ...
     'Verbose',false, ...
     'Plots','training-progress');
@@ -106,10 +109,9 @@ model = trainNetwork(imdsTrain,CNNlayers,options);
 
 %% 5.
 disp("Classify network with Test Data ...");
+[YPred, score] = classify(model, imdsTest);
+YTest = imdsTest.Labels;
 
-[YPred, score] = classify(model, imdsValidation);
-
-YTest = imdsValidation.Labels;
 
 %finding accuracy 
 accuracy = sum(YPred == YTest)/numel(YTest);
