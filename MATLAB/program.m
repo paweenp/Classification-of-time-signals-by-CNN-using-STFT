@@ -5,7 +5,8 @@
 % 3. Create Convolution Neural Network (CNN) 
 % 4. Train Network with the Spectrogram Images (Randomly picked up train
 % and validation data )
-% 5. Plot the Graph showing the training and validation
+% 5. Plot the Graph showing the training and testing
+% 6. Show Confusion Matrix and Evaluation.
 
 %% 1. - 2.
 data_path = "C:\workspace\FRA-UAS\semester2\CompInt\CompInt-Project-T3\Data";
@@ -83,8 +84,6 @@ labelCount = countEachLabel(imds);
 [imdsTrain, imdsTest] = splitEachLabel(imds, train_test_ratio, 'randomize');
 numTrain = size(imdsTrain.Files, 1);
 numTest = size(imdsTest.Files, 1);
-
-%% Temp Section !TODO Delete this line
 
 disp("Select " + numTrain + " images for Training ...");
 disp("Select " + numTest + " images for Testing ...");
