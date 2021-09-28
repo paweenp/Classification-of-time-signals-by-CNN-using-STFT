@@ -11,7 +11,7 @@
 
 %% 1. - 2.
 %Giving path of dataset folder
-data_path = "C:\workspace\FRA-UAS\semester2\CompInt\CompInt-Project-T3\Data";
+data_path = ".\..\Data";
 list_obj = dir(data_path + '\*Data Object*.xlsx');
 total_obj = size(list_obj, 1);
 
