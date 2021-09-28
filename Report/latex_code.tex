@@ -7,6 +7,8 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{tabularx}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -49,7 +51,7 @@ md.islam3@stud.fra-uas.de}
 \end{abstract}
 
 \begin{IEEEkeywords}
-Convolutional Neural Network, Short Time Fourier Transform, Spectrogram
+Convolutional Neural Network, Short Time Fourier Transform, Spectrogram, Classification of time signals
 \end{IEEEkeywords}
 
 \section{INTRODUCTION}
@@ -90,10 +92,13 @@ signal, and \(exp (j2\pi f\tau)\) is the complex exponential.
 
 We construct CNN layers as ``Fig.~\ref{fig_CNN}'', while each color represent different layer type. According to 
 
-
-\begin{tabular}{||c c c c||} 
-
-\end{tabular}
+\begin{tabularx}{0.48\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X |}
+ \hline
+\end{tabularx}
 
 TODO - add some text here to explain steps
 
@@ -113,6 +118,9 @@ TODO - add photos of validation
 \section{EXPERIMENT RESULT}
 
 
+
+
+
 TODO 
 
 Experiment with 100 times
@@ -122,6 +130,51 @@ Show confusion matrix
 Write about Evaluation score (Accu, Precision, etc)
 
 Classification result
+
+Classification result is shown as  ....
+\\
+
+\begin{tabularx}{0.48\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X |}
+\hline
+Object Name & Classified as Object 1 (\%) & Classified as Object 2 (\%) & Classified as Object 3 (\%)\\
+\hline
+T1  &100   &0   &0  \\
+%\hline
+T2  &100   &0   &0  \\
+%\hline
+T3  &84   &16   &0  \\
+%\hline
+T4  &88   &12   &0  \\
+%\hline
+T5  &88   &12   &0  \\
+%\hline
+T6  &12   &0   &88  \\
+%\hline
+T7  &70   &0   &30  \\
+%\hline
+T8  &60   &0   &40  \\
+%\hline
+T9  &64   &0   &36  \\
+%\hline
+T10  &80   &0   &20  \\
+%\hline
+T11  &82   &0   &18  \\
+%\hline
+T12  &0   &100   &0  \\
+\hline
+\end{tabularx}
+
+
+
+
+
+
+
+
 
 
 \section{CONCLUSION}
@@ -133,9 +186,11 @@ Classification result
 
 \bibitem{b2} J.-C. Wang, H.-P. Lee, J.-F. Wang, and C.-B. Lin, “Robust Environmental Sound Recognition for Home Automation,” IEEE Transactions on Automation Science and Engineering, vol. 5, no. 1, pp. 25–31, Jan. 2008.
 
+\bibitem{b3} Jont B. Allen "Short Time Spectral Analysis, Synthesis, and Modification by Discrete Fourier Transform". IEEE Transactions on Acoustics, Speech, and Signal Processing. ASSP-25 (3): 235–238, June 1977.
+
+\bibitem{b4} P. Pongsomboon, M. Pirmoradian, Md Mukit Khan, and Md Rabiul Islam "Classification-of-time-signals-by-CNN-using-STFT" Retreived from Github - https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/blob/master/MATLAB, 2021.
 
 
- \bibitem{b3} Jont B. Allen "Short Time Spectral Analysis, Synthesis, and Modification by Discrete Fourier Transform". IEEE Transactions on Acoustics, Speech, and Signal Processing. ASSP-25 (3): 235–238, June 1977.
 
 
 \end{thebibliography}
