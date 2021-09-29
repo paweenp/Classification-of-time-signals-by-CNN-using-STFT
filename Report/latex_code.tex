@@ -13,11 +13,8 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Classification of time signals by CNN using STFT\\
-% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-% should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
-}
+\title{Classification of time signals by CNN using STFT}
+
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Paween Pongsomboon}
 \IEEEauthorblockA{\textit{Computational Intelligence } \\
@@ -31,11 +28,11 @@ paween.pongsomboon@stud.fra-uas.de}
 %City, Country \\
 mahdieh.pirmoradian@stud.fra-uas.de}
 \and
-\IEEEauthorblockN{3\textsuperscript{rd} TestName }
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+\IEEEauthorblockN{3\textsuperscript{rd} Md Mukit Khan }
+\IEEEauthorblockA{\textit{Computational Intelligence} \\
+\textit{Matriculation 1347869}\\
+%City, Country \\
+md.mukitkhan@stud.fra-uas.de}
 \and
 \IEEEauthorblockN{4\textsuperscript{th} Md Rabiul Islam}
 \IEEEauthorblockA{\textit{Computational Intelligence } \\
@@ -55,8 +52,8 @@ Convolutional Neural Network, Short Time Fourier Transform, Spectrogram, Classif
 \end{IEEEkeywords}
 
 \section{INTRODUCTION}
-A great deal of information about our everyday surroundings and the physical actions that happens there can be transmitted by sound. Therefore, classifying this sounds can be helpful in many ways like surveillance systems or awareness and understanding of other species behaviours. But on one side, humans hearing frequency range is limited between 20 to 20,000. On the other side, handling large volumes of data is impossible or time consuming. That is when, machine learning techniques can be used. With recent great advancements in the application of automatic systems numerous researches have been done in automatic sound classification as well. For example, EnvNet \cite{b1} and speaker recognition \cite{b2}. in this research a strong deep learning machine learning approach that differs from other types of neural networks for instance having a specialty in being able to recognize patterns as well as find meaning of them names as a Convolutional Neural Network (CNN), get attentions. It behaves similarly to how our visual cortex recognizes images by Feature learning and classification. First by giving a big amount of labeled data to CNNs for training it can recognize the features which are similar in each category then at the time of testing by receiving a new data it can recognize to which category it belongs to. CNNs are consisted of some layers. It receives the input in the form of an image then in each layer there is a filter to recognize features then the output of each layer is the input to the next layer. In CNNs the first few layers are for feature extraction and the last layers for classification. 
-When we try to train our CNN straight from row audio, we get certain issues. Firstly, long-range dependencies are difficult to record. Furthermore, in most devices like cellphones they use image classification functionality also. Therefore to reduce the cost of development it is better to use the same technology for both image and sound classification. That is the main reason that, using a Spectrogram, which is a far more compact representation of the sound and computationally simpler than raw audio is helpful. We utilize a spectrogram to visualize signals into images, which divides your signal into tiny windows and displays a spectrum of colors indicating the strength of each frequency. In reality, it employs the Short Time Fourier Transform (STFT). The fundamental aim of this paper is to show how we can use CNNs to categorize a long-sampled time domain signal. Then we reviewed what adjustments needed to be made to our Conv Net's design in order to achieve a better result in the accuracy of model classifying, as well as what aspects we should consider while testing our program. Furthermore, in the process of creating spectrograms, selecting the window type, size, and speed of movement was critical for obtaining an accurate picture of the sound.
+A great deal of information about our everyday surroundings and the physical actions that happens there can be transmitted by sound. Therefore, classifying this sounds can be helpful in many ways like surveillance systems or awareness and understanding of other species behaviours. But on one side, humans hearing frequency range is limited between 20 to 20,000. On the other side, handling large volumes of data is impossible or time consuming. That is when, machine learning techniques can be used. With recent great advancements in the application of automatic systems numerous researches have been done in automatic sound classification as well. For example, EnvNet \cite{b1} and speaker recognition \cite{b2}. in this research a strong deep learning machine learning approach that differs from other types of neural networks for instance having a specialty in being able to recognize patterns as well as find meaning of them names as a Convolutional Neural Network (CNN), get attentions. It behaves similarly to how our visual cortex recognizes images by Feature learning and classification. First by giving a big amount of labeled data to CNNs for training it can recognize the features which are similar in each category then at the time of testing by receiving a new data it can recognize to which category it belongs to. CNN is divided into two main sections: Feature Extraction and Classification. In CNNs the first few layers are for feature extraction and the last layers for classification. Feature extraction consists of three layers named Convolutional, batch Normalization, Relu  and Max Pooling Layer. Classification layer consists of only fully connected layer. It receives the input in the form of an image then in each layer there is a filter to recognize features then the output of each layer is the input to the next layer. 
+When we try to train our CNN straight from row audio, we get certain issues. Firstly, long-range dependencies are difficult to record. Furthermore, "Most  mobile  devices  contain  both  cameras  and  microphones,  and  companies  that  develop  mobile  devices  would  like  to  provide  functionality  for  classifying both videos/images and sounds; using the same technology for both these classification tasks would reduce the development cost significantly"\cite{b8}. Therefore to reduce the cost of development it is better to use the same technology for both image and sound classification. That is the main reason that, using a Spectrogram, which is a far more compact representation of the sound and computationally simpler than raw audio is helpful. We utilize a spectrogram to visualize signals into images, which divides your signal into tiny windows and displays a spectrum of colors indicating the strength of each frequency. In reality, it employs the Short Time Fourier Transform (STFT). The fundamental aim of this paper is to show how we can use CNNs to categorize a long-sampled time domain signal. Then we reviewed what adjustments needed to be made to our Conv Net's design in order to achieve a better result in the accuracy of model classifying, as well as what aspects we should consider while testing our program. Furthermore, in the process of creating spectrograms, selecting the window type, size, and speed of movement was critical for obtaining an accurate picture of the sound.
 
 
 \section{METHODOLOGY}
@@ -115,7 +112,11 @@ T File 12.xlsx  &50 & 1-D time signal data\\
 \end{table}
 
 \subsection{Preprocessing}
-Preprocessing is a method to preprocess on data by converting one dimensional data (1D data) into two dimensional data (2D data). Preprocessing performs STFT on time signal data using (\ref{eqn_stft}), which is from Jont B. Allen\cite{b3}, and generates spectrogram as a result as shown in ``Fig.~\ref{fig_preprocessing}'', where the input is time signal data and the output is spectrogram. Spectrogram is a signal's visual representation. It plots the amplitude of the signal's frequency components over time. 
+Preprocessing is a method to preprocess on data by converting one dimensional data (1D data) into two dimensional data (2D data). Preprocessing composes of 
+
+
+\subsubsection{Short-Time Fourier Transform}
+Preprocessing performs STFT on time signal data using (\ref{eqn_stft}), which is from Jont B. Allen\cite{b3}, and generates spectrogram as a result as shown in ``Fig.~\ref{fig_preprocessing}'', where the input is time signal data and the output is spectrogram. Spectrogram is a signal's visual representation. It plots the amplitude of the signal's frequency components over time. 
 
 \begin{equation}
 X(f,t) = \int_{-\infty}^{\infty} w(t-\tau)x(\tau)e^{j2\pi f\tau} \,d\tau \label{eqn_stft}
@@ -125,14 +126,18 @@ where \(X(f, t) \) is the spectrogram, t is the time variable, \(w(t - \tau)\) i
 signal, and \(exp (j2\pi f\tau)\) is the complex exponential.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale = 0.40]{Preprocessing.png}}
+\centerline{\includegraphics[scale = 0.35]{Preprocessing.png}}
 \caption{Performing STFT to convert time signal data (Left) into Spectrogram (right)}
 \label{fig_preprocessing}
 \end{figure}
 
-\subsection{Training and Testing}
 
-In the experiment, the supervised learning has been used to train the CNN model, which is shown as (Fig. \ref{fig_CNN}). We train the model with the spectrogram images from preprocessing. By segregating 80 percent of each data from (table \ref{table_traindata}) for training and 20 percent for testing or validation, the CNN model then adjusts weights accordingly. 
+\subsubsection{Downsampling}
+Downsampling is used to reduce the size of the original spectrogram images. This process helps deduct computational cost, so the personal computer can run the training process. The original spectrogram image size is $ 875 \times 656 \times 3$, the size is then decreased to 20 percent of the original size, which is $88 \times 66 \times 3$. The same process has been applied to both datasets in (table \ref{table_traindata} and table \ref{table_classifydata}).
+
+
+\subsection{Training and Testing}
+In the experiment, the supervised learning has been used to train the CNN model, which is shown as (Fig. \ref{fig_CNN}). We train the model with the spectrogram images from preprocessing. By segregating 80 percent of each data from (table \ref{table_traindata}) for training and 20 percent for testing or validation, the CNN model then adjusts weights accordingly. Note that each time we do the experiment, the spectrogram images are selected randomly.
 
 \begin{figure}[!htbp]
 \centerline{\includegraphics[scale = 0.45]{CNN2.png}}
@@ -143,8 +148,6 @@ In the experiment, the supervised learning has been used to train the CNN model,
 (Fig. \ref{fig_CNN}) shows the CNN layer diagram used in this experiment, while the spectrogram image is the input and classification result is the output. CNN layers's details can be founded at (table \ref{table_CNN}).
 
 
-
-\newpage
 \begin{table}[!htbp]
 \centering
 \caption{CNN Layers in detail}
@@ -194,18 +197,31 @@ The process of training CNN model requires optimizer to updates weights and bias
 
 Where $l$ is the iteration number, $\alpha > 0$ is the learning rate, $\theta $ is the parameter vector, and $\nabla E(\theta)$ is the loss function. $\gamma(\theta - \theta_{l-1})$ is the momentum term, which help reduce the oscillation in each iteration.
 
-The algorithm evaluates loss function ($\nabla E(\theta)$ using the entire training set, which is denoted by Epoch value. the training algorithm requires parameters as \ref{table_parameter}.
+The algorithm evaluates loss function ($\nabla E(\theta)$ using the entire training set, which is denoted by Epoch value. the training algorithm requires parameters as (table \ref{table_trainingOpt}).
 
 
 \begin{table}[!htbp]
 \centering
-\caption{training parameter}
-\begin{tabularx}{0.48\textwidth}{p{0.25\linewidth} | p{0.6\linewidth}}
+\caption{training setting}
+\begin{tabularx}{0.48\textwidth}{p{0.5\linewidth} | p{0.5\linewidth}}
+\hline
+Parameter & Value \\
+\hline
+InitialLearning Rate & 0.01 \\
+Epoch number & 30 \\
+Batch size & 16 \\
 \hline
 
+
 \end{tabularx}%
-\label{table_}
+\label{table_trainingOpt}
 \end{table}
+
+InitialLearning Rate denotes how fast the training can process. If the Initial Learning rate is too high, the training may exceed the optimal point too soon and has the low performance, while the low Initial Learning rate will result in long training time.  
+
+Epoch number indicates a full pass of the data in each iteration.
+
+Batch Size is size for each training iteration, it is a subset of the training set that is used to evaluate the gradient of the loss function and update the weights \cite{b7}.
 
 
 \subsection{Evaluation}
@@ -246,32 +262,51 @@ F1-Score = \frac{2 \times Precision \times Recall}{Precision + Recall}
 
 \subsection{Classification Experiment}
 
-We conducted the experiment 
-
-
+The classification experiment uses the previous trained model from training and testing. The experiment is as simple as feed all spectrogram images from the untrained and untested dataset (table \ref{table_classifydata}) into the trained CNN model and then we acquire the classification result.
 
 
 \section{EXPERIMENT RESULT}
 
+There are two experiment results, which are resulted from CNN model training part and classification experiment. 
 
+\subsubsection{CNN Model's Training Experiment}
+The CNN Model's training experiment has been conducted for 100 times and evaluated using the evaluation method from methodology part. The result of training experiment is as shown in (table \ref{table_training_result}), which is the average result of 100 experiment times. The evaluation result can be found at \cite{b4} under MATLAB directory and filename "experiment\_result.csv".
 
-
-
-TODO 
-
-Experiment with 100 times
-
-Show confusion matrix 
-
-Write about Evaluation score (Accu, Precision, etc)
-
-Classification result
-
-Classification result is shown as  ....
-\\
-
-\begin{tabularx}{0.48\textwidth} { 
+\begin{table}[htbp]
+\centering
+\caption{Average CNN model training evaluation}
+\begin{tabularx}{0.4\textwidth} { 
   | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X |}
+\hline
+
+Accuracy & Precision & Recall & F1-Score \\
+\hline
+0.879454 & 0.896612 & 0.890216 & 0.891669 \\
+\hline
+\end{tabularx}
+\label{table_training_result}
+\end{table}
+
+One of the confusion matrix of the experiment is shown as (Fig.\ref{fig_confusion_matrix}). There are total 915 spectrogram images from 3 objects (table \ref{table_traindata}) used in training and testing. By the ratio of 80 percent training and 20 percent testing results in 732 data images for training and 183 data images for testing.
+
+\begin{figure}[!htbp]
+\centerline{\includegraphics[scale = 0.55]{confusion_matrix_2.png}}
+\caption{Confusion matrix from one of the experiment}
+\label{fig_confusion_matrix}
+\end{figure}
+
+\subsubsection{Classification Result}
+Classification results are the output of classification experiment. The process uses classification dataset (table \ref{table_classifydata}) and classifies using the trained CNN model from training and testing part. The dataset consists of 12 Objects, each object has 50 sampling signals. The result of classification is shown by (table{\ref{table_classifying_result}}) and a bar graph shows the potentiality (Fig. \ref{fig_potentiality}). The classification result can be found at \cite{b4} under MATLAB directory and filename is "classified\_result.csv";
+
+\newpage
+\begin{table}[htbp]
+\centering
+\caption{Classification result in percentage}
+\begin{tabularx}{0.48\textwidth} { 
+  | >{\centering\arraybackslash}X 
   | >{\centering\arraybackslash}X 
   | >{\centering\arraybackslash}X 
   | >{\centering\arraybackslash}X |}
@@ -303,9 +338,25 @@ T11  &82   &0   &18  \\
 T12  &0   &100   &0  \\
 \hline
 \end{tabularx}
+\label{table_classifying_result}
+\end{table}
 
+\begin{figure}[!htbp]
+\centerline{\includegraphics[scale = 0.7]{potential_graph.png}}
+\caption{Potentiality from classification result}
+\label{fig_potentiality}
+\end{figure}
 
 \section{DISCUSSION AND CONCLUSION}
+In the paper, we proposed the method to classify time signals with CNN model using STFT. The methodology in our paper converts the 1-D time signals into 2-D spectrogram images, which contain time, amplitude, and frequency. We trained the CNN model with three known objects, which has overall 915 images. 
+Our CNN model then extracted features and adjust weights using supervised learning technique, which the label objects are known. After performing training for 100 times, we evaluated the CNN model. It achieves high evaluation score, accuracy 0.88, precision 0.90, recall 0.90, and F1-Score 0.89. The trained CNN model is then used to classify another unlabeled dataset.  
+
+\section{Encounter Problems}
+Although the evaluation of training experiment shows the promising result, as we conduct the experiment for 100 times, we found the low evaluation result in 1 of 100 times. The cause is still unknown, but we make an assumption that since the data from training dataset (table \ref{table_traindata}) is selected ramdomly, seldomly the process selects poor samples for training and resulting in low adjusting in weights and biases. 
+
+\section{Commitment}
+The commitments of each member in this experiment can be found at \cite{b4}
+
 
 \begin{thebibliography}{00}
 \bibitem{b1} Y. Tokozume and T. Harada, “Learning environmental sounds with end-to-end convolutional neural network,” in 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2017, pp. 2721–2725.
@@ -323,8 +374,7 @@ In 2018 IEEE Spoken Language Technology Workshop (SLT) (pp. 1021–1028).
 
 \bibitem{b7} Kevin Patrick Murphy, "Machine Learning: a Probabilistic Perspective", The MIT Press, Cambridge, Massachusetts, 2012.
 
-
-
+\bibitem{b8} Venkatesh Boddapatia, Andrej Petefb, Jim Rasmussonb, Lars Lundberg, "Classifying environmental sounds using image recognition networks", International Conference on Knowledge Based and Intelligent Information and Engineering Systems, KES2017, 6-8 September 2017, Marseille, France
 
 \end{thebibliography}
 \end{document}
