@@ -55,7 +55,7 @@ Convolutional Neural Network, Short Time Fourier Transform, Spectrogram, Classif
 \end{IEEEkeywords}
 
 \section{INTRODUCTION}
-A great deal of information about our everyday surroundings and the physical actions that happens there can be transmitted by sound. Therefore, classifying this sounds can be helpful in many ways like surveillance systems or awareness and understanding of other species behaviours. But on one side, humans hearing frequency range is limited between 20 to 20,000. On the other side, handling large volumes of data is impossible or time consuming. That is when, machine learning techniques can be used. With recent great advancements in the application of automatic systems numerous researches have been done in automatic sound classification as well. For example, EnvNet \cite{b1} and home automation \cite{b2}. in this research a strong deep learning machine learning approach that differs from other types of neural networks for instance having a specialty in being able to recognize patterns as well as find meaning of them names as a Convolutional Neural Network (CNN), get attentions. It behaves similarly to how our visual cortex recognizes images by Feature learning and classification. First by giving a big amount of labeled data to CNNs for training it can recognize the features which are similar in each category then at the time of testing by receiving a new data it can recognize to which category it belongs to. CNNs are consisted of some layers. It receives the input in the form of an image then in each layer there is a filter to recognize features then the output of each layer is the input to the next layer. In CNNs the first few layers are for feature extraction and the last layers for classification. 
+A great deal of information about our everyday surroundings and the physical actions that happens there can be transmitted by sound. Therefore, classifying this sounds can be helpful in many ways like surveillance systems or awareness and understanding of other species behaviours. But on one side, humans hearing frequency range is limited between 20 to 20,000. On the other side, handling large volumes of data is impossible or time consuming. That is when, machine learning techniques can be used. With recent great advancements in the application of automatic systems numerous researches have been done in automatic sound classification as well. For example, EnvNet \cite{b1} and speaker recognition \cite{b2}. in this research a strong deep learning machine learning approach that differs from other types of neural networks for instance having a specialty in being able to recognize patterns as well as find meaning of them names as a Convolutional Neural Network (CNN), get attentions. It behaves similarly to how our visual cortex recognizes images by Feature learning and classification. First by giving a big amount of labeled data to CNNs for training it can recognize the features which are similar in each category then at the time of testing by receiving a new data it can recognize to which category it belongs to. CNNs are consisted of some layers. It receives the input in the form of an image then in each layer there is a filter to recognize features then the output of each layer is the input to the next layer. In CNNs the first few layers are for feature extraction and the last layers for classification. 
 When we try to train our CNN straight from row audio, we get certain issues. Firstly, long-range dependencies are difficult to record. Furthermore, in most devices like cellphones they use image classification functionality also. Therefore to reduce the cost of development it is better to use the same technology for both image and sound classification. That is the main reason that, using a Spectrogram, which is a far more compact representation of the sound and computationally simpler than raw audio is helpful. We utilize a spectrogram to visualize signals into images, which divides your signal into tiny windows and displays a spectrum of colors indicating the strength of each frequency. In reality, it employs the Short Time Fourier Transform (STFT). The fundamental aim of this paper is to show how we can use CNNs to categorize a long-sampled time domain signal. Then we reviewed what adjustments needed to be made to our Conv Net's design in order to achieve a better result in the accuracy of model classifying, as well as what aspects we should consider while testing our program. Furthermore, in the process of creating spectrograms, selecting the window type, size, and speed of movement was critical for obtaining an accurate picture of the sound.
 
 
@@ -64,12 +64,12 @@ When we try to train our CNN straight from row audio, we get certain issues. Fir
 The experiment of classification of time signals by CNN using STFT has been conducted following the flowchart diagram in ``Fig.~\ref{fig_flowchart}''.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale = 0.28]{flowchart1.png}}
+\centerline{\includegraphics[scale = 0.32]{flowchart_2.png}}
 \caption{Flowchart diagram of the experiment}
 \label{fig_flowchart}
 \end{figure}
 
-The experiment is composed of three parts.
+The experiment is composed of the following parts.
 
 \subsection{Preprocessing}
 Preprocessing is a method to preprocess on data by converting one dimensional data (1D data) into two dimensional data (2D data). Preprocessing performs STFT on time signal data using (\ref{eqn_stft}), which is from Jont B. Allen\cite{b3}, and generates spectrogram as a result as shown in ``Fig.~\ref{fig_preprocessing}'', where the input is time signal data and the output is spectrogram. Spectrogram is a signal's visual representation. It plots the amplitude of the signal's frequency components over time. 
@@ -82,25 +82,63 @@ where \(X(f, t) \) is the spectrogram, t is the time variable, \(w(t - \tau)\) i
 signal, and \(exp (j2\pi f\tau)\) is the complex exponential.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale = 0.35]{Preprocessing.png}}
-\caption{Performing STFT to convert 1D data into 2D data}
+\centerline{\includegraphics[scale = 0.40]{Preprocessing.png}}
+\caption{Performing STFT to convert time signal data (Left) into Spectrogram (right)}
 \label{fig_preprocessing}
 \end{figure}
 
 
 \subsection{Training}
 
-We construct CNN layers as ``Fig.~\ref{fig_CNN}'', while each color represent different layer type. According to 
 
-\begin{tabularx}{0.48\textwidth} { 
-  | >{\raggedright\arraybackslash}X 
-  | >{\raggedleft\arraybackslash}X 
-  | >{\raggedleft\arraybackslash}X 
-  | >{\raggedleft\arraybackslash}X |}
- \hline
-\end{tabularx}
+%\begin{tabularx}{\textwidth}{X|l|l}
+%  \textbf{Layer} & \textbf{Description} & \textbf{Size} \\
+%\hline
+%'imageinput'    & Image Input & 132×175×3 images with %'zerocenter' normalization  \\
+%\end{tabularx}
 
-TODO - add some text here to explain steps
+
+\begin{table}[!htbp]
+\centering
+\caption{CNN Layers in detail}
+\begin{tabularx}{0.48\textwidth}{p{0.25\linewidth} | p{0.6\linewidth}}
+Layer  & Size  \\
+\hline
+ Image Input  & 132×175×3 images with 'zerocenter' normalization \\
+Convolution           & 8 3×3×3 convolutions with stride [1  1] and padding 'same' \\
+Batch Normalization   & Batch normalization with 8 channels \\
+ReLU                  & ReLU \\
+Max Pooling           & 2×2 max pooling with stride [2  2] and padding [0  0  0  0] \\
+\hline
+Convolution             & 16 3×3×8 convolutions with stride [1  1] and padding 'same' \\
+Batch Normalization     & Batch normalization with 16 channels \\
+ReLU                    & ReLU \\
+Max Pooling             & 2×2 max pooling with stride [2  2] and padding [0  0  0  0] \\
+\hline
+Convolution             & 32 3×3×16 convolutions with stride [1  1] and padding 'same' \\
+Batch Normalization     & Batch normalization with 32 channels \\
+ReLU                    & ReLU \\
+Max Pooling             & 2×2 max pooling with stride [2  2] and padding [0  0  0  0] \\
+\hline
+Convolution             & 64 3×3×32 convolutions with stride [1  1] and padding 'same' \\
+Batch Normalization     & Batch normalization with 64 channels \\
+ReLU                    & ReLU \\
+Max Pooling             & 2×2 max pooling with stride [2  2] and padding [0  0  0  0] \\
+\hline
+Convolution             & 128 3×3×64 convolutions with stride [1  1] and padding 'same' \\
+Batch Normalization     & Batch normalization with 128 channels \\
+ReLU                    & ReLU \\
+\hline
+Fully Connected         & 3 fully connected layer \\
+Softmax                 & softmax \\
+Classification Output   & crossentropyex with 'object1' and 2 other classes \\
+\hline
+
+
+\end{tabularx}%
+\end{table}
+
+%TODO - add some text here to explain steps
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale = 0.45]{CNN_model_complete_compressed.png}}
@@ -113,6 +151,20 @@ TODO - add some text here to explain steps
 TODO - add some text here to explain steps
 
 TODO - add photos of validation
+
+
+\subsection{Evaluation}
+
+TODO Add Equation of Accuracy and explain
+
+TODO Add Equation of Precision and explain
+
+TODO Add Equation of Recall and Explain
+
+TODO Add Equation of F1-Score and Explain
+
+\subsection{Classification Experiment}
+
 
 
 \section{EXPERIMENT RESULT}
@@ -177,14 +229,15 @@ T12  &0   &100   &0  \\
 
 
 
-\section{CONCLUSION}
+\section{DISCUSSION AND CONCLUSION}
 
 
 
 \begin{thebibliography}{00}
 \bibitem{b1} Y. Tokozume and T. Harada, “Learning environmental sounds with end-to-end convolutional neural network,” in 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2017, pp. 2721–2725 
 
-\bibitem{b2} J.-C. Wang, H.-P. Lee, J.-F. Wang, and C.-B. Lin, “Robust Environmental Sound Recognition for Home Automation,” IEEE Transactions on Automation Science and Engineering, vol. 5, no. 1, pp. 25–31, Jan. 2008.
+\bibitem{b2} Ravanelli, M., & Bengio, Y. (2018). Speaker recognition from raw waveform with sincnet.
+In 2018 IEEE Spoken Language Technology Workshop (SLT) (pp. 1021–1028).
 
 \bibitem{b3} Jont B. Allen "Short Time Spectral Analysis, Synthesis, and Modification by Discrete Fourier Transform". IEEE Transactions on Acoustics, Speech, and Signal Processing. ASSP-25 (3): 235–238, June 1977.
 
