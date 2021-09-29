@@ -269,7 +269,7 @@ disp("F1-Score  = " + All_F1Score);
 
 % Show confusion Matrix ( Integer format )
 confusionchart(ceil(All_CM));
-
+plotconfusion(YTest,YPred)
 % Write result to csv files
 disp("Write result to file as " + result_filename);
 writecell(exp_result, result_filename);
