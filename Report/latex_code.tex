@@ -47,7 +47,7 @@ md.islam3@stud.fra-uas.de}
 \maketitle
 
 \begin{abstract}
-
+Time dominated signal classification is an important field  that has so far covered a wide range of applications. Despite its popularity over the last few decades, it remains a difficult task that falls short of efficiency due to the nature of its  randomness and dimensionality, large in data size, and continuous updating. Classifying these time signals can be beneficial in a variety of ways but Deep learning has resulted in the development of new methods, particularly Convolutional Neural Network (CNN) models. This paper proposes a method for classifying time-dominated signals from three particular objects using a two-dimensional (2D) convolution neural network (CNN) and the Short-Time Fourier Transformation (STFT).
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -61,15 +61,58 @@ When we try to train our CNN straight from row audio, we get certain issues. Fir
 
 \section{METHODOLOGY}
 
-The experiment of classification of time signals by CNN using STFT has been conducted following the flowchart diagram in ``Fig.~\ref{fig_flowchart}''.
+The experiment of classification of time signals by CNN using STFT has been conducted following the flowchart diagram in (Fig.~\ref{fig_flowchart}).
+For the sake of simplicity, the experiment is divided into parts. The process of experiment begins with converting audio time signal into spectrogram images using STFT. Spectrogram images are then feeded into CNN model with supervised learning technique. The training process using CNN model requires the CNN model to adjust weights according to training and validated data. Lastly, the trained CNN model is then used in classification experiment.
 
+\newpage
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale = 0.32]{flowchart_2.png}}
+\centerline{\includegraphics[scale = 0.3]{flowchart_2.png}}
 \caption{Flowchart diagram of the experiment}
 \label{fig_flowchart}
 \end{figure}
 
-The experiment is composed of the following parts.
+
+\subsection{Dataset}
+The dataset used in this experiment can be founded at \cite{b4} under "Data" directory. We use files "Data Object 1.xlsx" to "Data Object 3.xlsx" as shown in (table \ref{table_traindata}) to train the CNN model. While we use files "T File 1.xlsx" to "T File 12.xlsx" as shown in (table \ref{table_classifydata}) to do the classfication experiment. 
+
+\begin{table}[htbp]
+\centering
+\caption{Dataset for training model}
+\begin{tabularx}{0.48\textwidth}{p{0.25\linewidth} | p{0.25\linewidth} | p{0.3\linewidth}}
+\hline
+Data    & Sampling Signal & Description\\
+\hline
+Data Object 1.xlsx  &315 & 1-D time signal data\\
+Data Object 2.xlsx  &200 & 1-D time signal data\\
+Data Object 3.xlsx  &400 & 1-D time signal data\\
+\hline
+\end{tabularx}
+\label{table_traindata}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{Dataset for classification}
+\begin{tabularx}{0.48\textwidth}{p{0.25\linewidth} | p{0.25\linewidth} | p{0.3\linewidth}}
+\hline
+Data    & Sampling Signal & Description\\
+\hline
+T File 1.xlsx  &50 & 1-D time signal data\\
+T File 2.xlsx  &50 & 1-D time signal data\\
+T File 3.xlsx  &50 & 1-D time signal data\\
+T File 4.xlsx  &50 & 1-D time signal data\\
+T File 5.xlsx  &50 & 1-D time signal data\\
+T File 6.xlsx  &50 & 1-D time signal data\\
+T File 7.xlsx  &50 & 1-D time signal data\\
+T File 8.xlsx  &50 & 1-D time signal data\\
+T File 9.xlsx  &50 & 1-D time signal data\\
+T File 10.xlsx  &50 & 1-D time signal data\\
+T File 11.xlsx  &50 & 1-D time signal data\\
+T File 12.xlsx  &50 & 1-D time signal data\\
+\hline
+\end{tabularx}
+\label{table_classifydata}
+\end{table}
 
 \subsection{Preprocessing}
 Preprocessing is a method to preprocess on data by converting one dimensional data (1D data) into two dimensional data (2D data). Preprocessing performs STFT on time signal data using (\ref{eqn_stft}), which is from Jont B. Allen\cite{b3}, and generates spectrogram as a result as shown in ``Fig.~\ref{fig_preprocessing}'', where the input is time signal data and the output is spectrogram. Spectrogram is a signal's visual representation. It plots the amplitude of the signal's frequency components over time. 
@@ -87,83 +130,124 @@ signal, and \(exp (j2\pi f\tau)\) is the complex exponential.
 \label{fig_preprocessing}
 \end{figure}
 
+\subsection{Training and Testing}
 
-\subsection{Training}
+In the experiment, the supervised learning has been used to train the CNN model, which is shown as (Fig. \ref{fig_CNN}). We train the model with the spectrogram images from preprocessing. By segregating 80 percent of each data from (table \ref{table_traindata}) for training and 20 percent for testing or validation, the CNN model then adjusts weights accordingly. 
+
+\begin{figure}[!htbp]
+\centerline{\includegraphics[scale = 0.45]{CNN2.png}}
+\caption{CNN Layer Diagram}
+\label{fig_CNN}
+\end{figure}
+
+(Fig. \ref{fig_CNN}) shows the CNN layer diagram used in this experiment, while the spectrogram image is the input and classification result is the output. CNN layers's details can be founded at (table \ref{table_CNN}).
 
 
-%\begin{tabularx}{\textwidth}{X|l|l}
-%  \textbf{Layer} & \textbf{Description} & \textbf{Size} \\
-%\hline
-%'imageinput'    & Image Input & 132×175×3 images with %'zerocenter' normalization  \\
-%\end{tabularx}
 
-
+\newpage
 \begin{table}[!htbp]
 \centering
 \caption{CNN Layers in detail}
 \begin{tabularx}{0.48\textwidth}{p{0.25\linewidth} | p{0.6\linewidth}}
-Layer  & Size  \\
 \hline
- Image Input  & 132×175×3 images with 'zerocenter' normalization \\
-Convolution           & 8 3×3×3 convolutions with stride [1  1] and padding 'same' \\
-Batch Normalization   & Batch normalization with 8 channels \\
-ReLU                  & ReLU \\
-Max Pooling           & 2×2 max pooling with stride [2  2] and padding [0  0  0  0] \\
+Layer  & Description and size  \\
 \hline
-Convolution             & 16 3×3×8 convolutions with stride [1  1] and padding 'same' \\
-Batch Normalization     & Batch normalization with 16 channels \\
-ReLU                    & ReLU \\
+ Image Input  & 132×175×3 (width × height × depth) images with 'zerocenter' normalization \\
+Convolution           & 8 filters 3×3×3 convolutions with stride [width = 1  height = 1] and padding 'same' \\
+Batch Norm   & Batch normalization with 8 channels \\
+ReLU                  & Rectified Linear Units  \\
+Max Pooling           & 2×2 max pooling with stride [width = 2  height = 2] and padding [0  0  0  0] \\
+\hline
+Convolution             & 16 filters 3×3×8 convolutions with stride [1  1] and padding 'same' \\
+Batch Norm     & Batch normalization with 16 channels \\
+ReLU                    & Rectified Linear Units  \\
 Max Pooling             & 2×2 max pooling with stride [2  2] and padding [0  0  0  0] \\
 \hline
-Convolution             & 32 3×3×16 convolutions with stride [1  1] and padding 'same' \\
-Batch Normalization     & Batch normalization with 32 channels \\
-ReLU                    & ReLU \\
+Convolution             & 32 filters 3×3×16 convolutions with stride [1  1] and padding 'same' \\
+Batch Norm     & Batch normalization with 32 channels \\
+ReLU                    & Rectified Linear Units  \\
 Max Pooling             & 2×2 max pooling with stride [2  2] and padding [0  0  0  0] \\
 \hline
-Convolution             & 64 3×3×32 convolutions with stride [1  1] and padding 'same' \\
-Batch Normalization     & Batch normalization with 64 channels \\
-ReLU                    & ReLU \\
+Convolution             & 64 filters 3×3×32 convolutions with stride [1  1] and padding 'same' \\
+Batch Norm     & Batch normalization with 64 channels \\
+ReLU                    & Rectified Linear Units  \\
 Max Pooling             & 2×2 max pooling with stride [2  2] and padding [0  0  0  0] \\
 \hline
-Convolution             & 128 3×3×64 convolutions with stride [1  1] and padding 'same' \\
-Batch Normalization     & Batch normalization with 128 channels \\
-ReLU                    & ReLU \\
+Convolution             & 128 filters 3×3×64 convolutions with stride [1  1] and padding 'same' \\
+Batch Norm     & Batch normalization with 128 channels \\
+ReLU                    & Rectified Linear Units  \\
 \hline
 Fully Connected         & 3 fully connected layer \\
 Softmax                 & softmax \\
 Classification Output   & crossentropyex with 'object1' and 2 other classes \\
 \hline
-
-
 \end{tabularx}%
+\label{table_CNN}
 \end{table}
 
-%TODO - add some text here to explain steps
+The process of training CNN model requires optimizer to updates weights and biases, which we use Stochastic Gradient Descent with Momentum (SGDM) algorithm to minimise the loss function \cite{b7}. SGDM algorithm is shown as (\ref{eqn_SGDM})
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale = 0.45]{CNN_model_complete_compressed.png}}
-\caption{CNN Layer Diagram}
-\label{fig_CNN}
-\end{figure}
+\begin{equation}
+\theta_{l+1} = \theta_l - \alpha\nabla E(\theta_l) + \gamma(\theta - \theta_{l-1}) 
+\label{eqn_SGDM}
+\end{equation}
 
-\subsection{Validation}
+Where $l$ is the iteration number, $\alpha > 0$ is the learning rate, $\theta $ is the parameter vector, and $\nabla E(\theta)$ is the loss function. $\gamma(\theta - \theta_{l-1})$ is the momentum term, which help reduce the oscillation in each iteration.
 
-TODO - add some text here to explain steps
+The algorithm evaluates loss function ($\nabla E(\theta)$ using the entire training set, which is denoted by Epoch value. the training algorithm requires parameters as \ref{table_parameter}.
 
-TODO - add photos of validation
+
+\begin{table}[!htbp]
+\centering
+\caption{training parameter}
+\begin{tabularx}{0.48\textwidth}{p{0.25\linewidth} | p{0.6\linewidth}}
+\hline
+
+\end{tabularx}%
+\label{table_}
+\end{table}
 
 
 \subsection{Evaluation}
 
-TODO Add Equation of Accuracy and explain
+After we train CNN model, we evaluated the CNN model's performance with the following measurements derived from \cite{b5}, \cite{b6}, which uses confusion matrix to evaluate predictions and actual data. Confusion matrix consists of four values. True Positive (TP) represents the value of correct predictions of positive out of actual positive cases. False Positive (FP) represents the value of incorrect positive predictions. True Negative (TN) represents the value of correct predictions of negatives out of actual negative cases. False Negative (FN) represents the value of incorrect negative predictions.
 
-TODO Add Equation of Precision and explain
+\subsubsection{Accuracy}
+Accuracy indicates the CNN model's performance on prediction. It is calculated as the ratio between correct prediction and overall prediction. The accuracy is measured by the equation from (\ref{eqn_accuracy}). 
 
-TODO Add Equation of Recall and Explain
+\begin{equation}
+Accuracy = \frac{TP + TN}{TP + TN + FP + FN} \\
+\label{eqn_accuracy}
+\end{equation}
 
-TODO Add Equation of F1-Score and Explain
+\subsubsection{Precision}
+Precision indicates the CNN model's ability in order to predict positive predictions correctly out of all positive predictions.  Precision is measured by the equation (\ref{eqn_precision}). Increasing precision means increasing correctness of the positive prediction.
+
+\begin{equation}
+Precision = \frac{TP}{TP + FP}
+\label{eqn_precision}
+\end{equation}
+
+\subsubsection{Recall}
+Recall is similar to precision, however recall measures the correctly positive predictions out of correct prediction. Recall is measured by the equation (\ref{eqn_recall}). Increasing recall value means minimising the incorrect predictions
+
+\begin{equation}
+Recall = \frac{TP}{TP + FN}
+\label{eqn_recall}
+\end{equation}
+
+\subsubsection{F1-Score}
+F1-Score involves precision and recall. It balances between both measurements. F1-Score is measured by the equation (\ref{eqn_f1score}). F1-Score is useful in the scenario where model gives high FP and FN.
+
+\begin{equation}
+F1-Score = \frac{2 \times Precision \times Recall}{Precision + Recall}
+\label{eqn_f1score}
+\end{equation}
 
 \subsection{Classification Experiment}
+
+We conducted the experiment 
+
 
 
 
@@ -221,27 +305,23 @@ T12  &0   &100   &0  \\
 \end{tabularx}
 
 
-
-
-
-
-
-
-
-
 \section{DISCUSSION AND CONCLUSION}
 
-
-
 \begin{thebibliography}{00}
-\bibitem{b1} Y. Tokozume and T. Harada, “Learning environmental sounds with end-to-end convolutional neural network,” in 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2017, pp. 2721–2725 
+\bibitem{b1} Y. Tokozume and T. Harada, “Learning environmental sounds with end-to-end convolutional neural network,” in 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2017, pp. 2721–2725.
 
-\bibitem{b2} Ravanelli, M., & Bengio, Y. (2018). Speaker recognition from raw waveform with sincnet.
+\bibitem{b2} Ravanelli, M., \& Bengio, Y. (2018). Speaker recognition from raw waveform with sincnet.
 In 2018 IEEE Spoken Language Technology Workshop (SLT) (pp. 1021–1028).
 
 \bibitem{b3} Jont B. Allen "Short Time Spectral Analysis, Synthesis, and Modification by Discrete Fourier Transform". IEEE Transactions on Acoustics, Speech, and Signal Processing. ASSP-25 (3): 235–238, June 1977.
 
-\bibitem{b4} P. Pongsomboon, M. Pirmoradian, Md Mukit Khan, and Md Rabiul Islam "Classification-of-time-signals-by-CNN-using-STFT" Retreived from Github - https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/blob/master/MATLAB, 2021.
+\bibitem{b4} P. Pongsomboon, M. Pirmoradian, Md Mukit Khan, and Md Rabiul Islam "Classification-of-time-signals-by-CNN-using-STFT" Retreived from Github - https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/blob/master/, 2021.
+
+\bibitem{b5} Ahmed Fawzy Gad, "Evaluating Deep Learning Models: The Confusion Matrix, Accuracy, Precision, and Recall", published on 2020, accessed on 25 Aug 2021.
+
+\bibitem{b6} Ajitesh Kumar, "Accuracy, Precision, Recall \& F1-Score", published on 3 September 2021, accessed on 20 September 2021.
+
+\bibitem{b7} Kevin Patrick Murphy, "Machine Learning: a Probabilistic Perspective", The MIT Press, Cambridge, Massachusetts, 2012.
 
 
 
