@@ -20,7 +20,7 @@ window = hamming(256); % window_size = 64, 128, 256
 overlap = 50; % 50 percent overlap between windows
 duration = seconds(1e-3); % duration of 1ms
 filetype = '.png'; % set file type here for JPG, PNG or other image filetype
-folder_name = "SpectrogramImgs"; % folder of output sub-folders
+folder_name = "TrainingObjects"; % folder of output sub-folders
 subfolder_prefix = "object"; % name of output folder with index of object
 resize_factor = 0.2;
 
