@@ -14,7 +14,7 @@ The commitment of each person on program can be tracked by following table
 |---------------------	|------------	|---------	| ---------	|
 | Paween Pongsomboon  	| [master branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commits/master?author=paweenp)           	| [Paween branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commits/Paween?author=paweenp)            	|
 | Mahdieh Pirmoradian 	| [master branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commits/master?author=MahdiehPirmoradian)           	| [Mahdieh branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commits/Mahdieh?author=MahdiehPirmoradian)         	|
-| Md Mukit Khan       	| [master branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commits/master?author=MukitCSTE)           	| [Mukit branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commits/Mukit?author=MukitCSTE)         	|
+| Md Mukit Khan       	| [master branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commits/master?author=MukitCSTE)           	| [Mukit branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commit/cbda1a1b8c96ece108e748a657debb55bb911fb1)         	|
 | Md Rabiul Islam     	| [master branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commits/master?author=rabiul64)           	| [Rabiul branch](https://github.com/paweenp/Classification-of-time-signals-by-CNN-using-STFT/commits/Rabiul?author=rabiul64)        	|
 
 ## Explain Directory
